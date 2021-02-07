@@ -38,11 +38,11 @@ button{
     margin-top: 18px;
 }
 .ingredients{
+    background-color: lightgray;
     margin-top: 40px;
     margin: auto;
   width: 50%;
   padding: 10px;
-  text-align: center;
 }
 .info-section{
     width: 200px;
