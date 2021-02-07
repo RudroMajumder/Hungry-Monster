@@ -33,8 +33,10 @@ function showItem(data) {
             mealDiv.className = 'meal';
             mealDiv.id = 'meal-item';
             const mealInfo = `
-                <img src= "${element.strMealThumb}" class="meal-image" >
-                <h4 id="item-name" onclick="showInfo('${element.idMeal}')"> ${element.strMeal} </h4>
+                <div onclick="showInfo('${element.idMeal}')">
+                    <img src= "${element.strMealThumb}" class="meal-image" >
+                    <h4 id="item-name" > ${element.strMeal} </h4>
+                </div>
             `;
             mealDiv.innerHTML = mealInfo;
             mealItems.appendChild(mealDiv);
@@ -71,7 +73,7 @@ const showInfo = meal =>{
                     element.strMeasure20 + ' ' +element.strIngredient20,
 
                 ]
-
+                
                 const index = ingredient.indexOf(" ");
 
                 const allIngredients = ingredient.slice(0,index);
@@ -82,23 +84,22 @@ const showInfo = meal =>{
                     const element = allIngredients[i];
                     console.log(element);
 
-                    const ingredientDiv = document.getElementById('info-id');
+                    const ingredientDiv = document.createElement('div');
 
-                    const ul =document.getElementById('info-ul');
+                    const ul =document.createElement('ul');
 
                     const li =document.createElement('li');
-
+                    li.className = 'ingredient-li';
                     console.log(ingredientDiv,ul,li);
 
                     li.innerText = element;
 
                     console.log(li);
-                    ul.innerHTML = li;
+                    ul.appendChild(li);
 
-                    console.log(ingredientDiv,ul);
 
                     ingredientDiv.appendChild(ul);
-                    
+                    document.body.appendChild(ingredientDiv);
 
 
                 }
