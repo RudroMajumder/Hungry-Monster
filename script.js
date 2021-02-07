@@ -1,6 +1,7 @@
 const itemDivHandler = () =>{
     document.getElementById('meals').innerHTML = '';
     document.getElementById('meal-details').innerHTML = '';
+    document.getElementById('meal-details').style.display = "none";
     const item = document.getElementById('item').value;
     const itemName = item.length;
     if( itemName == 1){
@@ -84,7 +85,7 @@ const showInfo = meal =>{
                     </ul>
                     `;
                     mealDetail.className = 'ingredients';
-
+                    document.getElementById('meal-details').style.display = "block";
                 }
         }
 
