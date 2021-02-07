@@ -46,64 +46,54 @@ function showItem(data) {
 const showInfo = meal =>{
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal}`)
     .then( res =>res.json())
-    .then( data => showMealInfo(data.meals));
+    .then( data => showMealInfo(data.meals[0]));
         const showMealInfo = data =>{
-            for (let i = 0; i < data.length; i++) {
-                const element = data[i];
-                const ingredient = [
-                    element.strMeasure1 + ' ' +element.strIngredient1,
-                    element.strMeasure2 + ' ' +element.strIngredient2,
-                    element.strMeasure3 + ' ' +element.strIngredient3,
-                    element.strMeasure4 + ' ' +element.strIngredient4,
-                    element.strMeasure5 + ' ' +element.strIngredient5,
-                    element.strMeasure6 + ' ' +element.strIngredient6,
-                    element.strMeasure7 + ' ' +element.strIngredient7,
-                    element.strMeasure8 + ' ' +element.strIngredient8,
-                    element.strMeasure9 + ' ' +element.strIngredient9,
-                    element.strMeasure10 + ' ' +element.strIngredient10,
-                    element.strMeasure11 + ' ' +element.strIngredient11,
-                    element.strMeasure12 + ' ' +element.strIngredient12,
-                    element.strMeasure13 + ' ' +element.strIngredient13,
-                    element.strMeasure14 + ' ' +element.strIngredient14,
-                    element.strMeasure15 + ' ' +element.strIngredient15,
-                    element.strMeasure16 + ' ' +element.strIngredient16,
-                    element.strMeasure17 + ' ' +element.strIngredient17,
-                    element.strMeasure18 + ' ' +element.strIngredient18,
-                    element.strMeasure19 + ' ' +element.strIngredient19,
-                    element.strMeasure20 + ' ' +element.strIngredient20,
-
-                ]
-                
-                const index = ingredient.indexOf(" ");
-
-                const allIngredients = ingredient.slice(0,index);
-
-                console.log(allIngredients);
-
-                for (let i = 0; i < allIngredients.length; i++) {
-                    const element = allIngredients[i];
-                    console.log(element);
-
-                    const ingredientDiv = document.createElement('div');
-
-                    const ul =document.createElement('ul');
-
-                    const li =document.createElement('li');
-                    li.className = 'ingredient-li';
-                    console.log(ingredientDiv,ul,li);
-
-                    li.innerText = element;
-
-                    console.log(li);
-                    ul.appendChild(li);
-
-
-                    ingredientDiv.appendChild(ul);
-                    document.body.appendChild(ingredientDiv);
-
+            const mealDetail= document.createElement('section');
+            mealDetail.innerHTML = "";
+            mealDetail.className = 'info-section'
+            const mealDetailDiv = document.createElement('div');
+            mealDetailDiv.className = 'meal-item';
+            const mealIngredient = `
+                <img src =" ${data.strMealThumb}" width="300px">
+                    <h2 style ="font-size: 20px;
+                    font-weight: bold;"> ${data.strMeal} </h2>
+                    <h3 style ="font-size: 20px;
+                    font-weight: bold;"> Ingredients </h3>
+                    <ul>
+                        <li style ="font-size: 20px;
+                        font-weight: bold;"> ${data.strMeasure1} ${data.strIngredient1}</li>
+                        <li style ="font-size: 20px;
+                        font-weight: bold;"> ${data.strMeasure2} ${data.strIngredient2}</li>
+                        <li style ="font-size: 20px;
+                        font-weight: bold;"> ${data.strMeasure3} ${data.strIngredient3}</li>
+                        <li style ="font-size: 20px;
+                        font-weight: bold;"> ${data.strMeasure4} ${data.strIngredient4}</li>
+                        <li style ="font-size: 20px;
+                        font-weight: bold;"> ${data.strMeasure5} ${data.strIngredient5}</li>
+                        <li style ="font-size: 20px;
+                        font-weight: bold;"> ${data.strMeasure6} ${data.strIngredient6}</li>
+                        <li style ="font-size: 20px;
+                        font-weight: bold;"> ${data.strMeasure7} ${data.strIngredient7}</li>
+                        <li style ="font-size: 20px;
+                        font-weight: bold;"> ${data.strMeasure8} ${data.strIngredient8}</li>
+                        <li style ="font-size: 20px;
+                        font-weight: bold;"> ${data.strMeasure9} ${data.strIngredient9}</li>
+                        <li style ="font-size: 20px;
+                        font-weight: bold;"> ${data.strMeasure10} ${data.strIngredient10}</li>
+                        <li style ="font-size: 20px;
+                        font-weight: bold;"> ${data.strMeasure11} ${data.strIngredient11}</li>
+                        <li style ="font-size: 20px;
+                        font-weight: bold;"> ${data.strMeasure12} ${data.strIngredient12}</li>
+                    </ul>
+                    `;
+                     mealIngredient.className = 'ingredients';
+                    mealDetailDiv.innerHTML = mealIngredient;
+                    document.body.appendChild(mealDetailDiv);
+                    // console.log(mealDetailDiv);
+                    // mealDetailDiv.style.display = 'inline-block';
 
                 }
         }
 
-}
-}
+
+
