@@ -1,5 +1,6 @@
 const itemDivHandler = () =>{
     document.getElementById('meals').innerHTML = '';
+    document.getElementById('meal-details').innerHTML = '';
     const item = document.getElementById('item').value;
     const itemName = item.length;
     if( itemName == 1){
@@ -48,18 +49,14 @@ const showInfo = meal =>{
     .then( res =>res.json())
     .then( data => showMealInfo(data.meals[0]));
         const showMealInfo = data =>{
-            const mealDetail= document.createElement('section');
-            mealDetail.innerHTML = "";
-            mealDetail.className = 'info-section'
-            const mealDetailDiv = document.createElement('div');
-            mealDetailDiv.className = 'meal-item';
-            const mealIngredient = `
-                <img src =" ${data.strMealThumb}" width="300px">
-                    <h2 style ="font-size: 20px;
+            const mealDetail= document.getElementById('meal-details');
+             mealDetail.innerHTML = `
+                <img src =" ${data.strMealThumb}" width="400px" style="margin:40px;">
+                    <h1 style ="font-size: 30px;
                     font-weight: bold;"> ${data.strMeal} </h2>
-                    <h3 style ="font-size: 20px;
-                    font-weight: bold;"> Ingredients </h3>
-                    <ul>
+                    <h3 style ="font-size: 30px;
+                    font-weight: bold;align:left;"> Ingredients </h3>
+                    <ul class="ingredients">
                         <li style ="font-size: 20px;
                         font-weight: bold;"> ${data.strMeasure1} ${data.strIngredient1}</li>
                         <li style ="font-size: 20px;
@@ -86,11 +83,7 @@ const showInfo = meal =>{
                         font-weight: bold;"> ${data.strMeasure12} ${data.strIngredient12}</li>
                     </ul>
                     `;
-                     mealIngredient.className = 'ingredients';
-                    mealDetailDiv.innerHTML = mealIngredient;
-                    document.body.appendChild(mealDetailDiv);
-                    // console.log(mealDetailDiv);
-                    // mealDetailDiv.style.display = 'inline-block';
+                    mealDetail.className = 'ingredients';
 
                 }
         }
