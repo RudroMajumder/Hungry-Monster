@@ -4,33 +4,35 @@ const itemDivHandler = () =>{
     document.getElementById('meal-details').style.display = "none";
     const item = document.getElementById('item').value;
     const itemName = item.length;
-    if( itemName == 1){
-        fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${item}`)
-        .then( res =>res.json())
-        .then( data => showMeal(data.meals));
-        const showMeal = data => {
-        showItem(data);
-        return data;
-        }
-    }
-
-    else{
-        fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${item}`)
-        .then( res =>res.json())
-        .then( data => showMeal(data.meals));
-        const showMeal = data => {
-        showItem(data);
-        return data;
-        }   
         
-    }
-}
+       
+            if( itemName == 1){
+                fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${item}`)
+                .then( res =>res.json())
+                .then( data => showMeal(data.meals));
+                const showMeal = data => {
+                showItem(data);
+                return data;
+                }
+            }
+            else{
+                fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${item}`)
+                .then( res =>res.json())
+                .then( data => showMeal(data.meals));
+                const showMeal = data => {
+                showItem(data);
+                return data;
+                }   
+                
+            }
+        }
+
+
 
 function showItem(data) {
     const mealItems = document.getElementById('meals');
-        for (let i = 0; i < data.length; i++) {
-            const element = data[i];
-            console.log(element);
+            data.forEach(element => {
+           
             const mealDiv = document.createElement('div');
             mealDiv.className = 'meal';
             mealDiv.id = 'meal-item';
@@ -43,7 +45,7 @@ function showItem(data) {
             mealDiv.innerHTML = mealInfo;
             mealItems.appendChild(mealDiv);
            
-        };
+        });
     } 
 const showInfo = meal =>{
     fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal}`)
