@@ -1,6 +1,7 @@
 const itemDivHandler = () =>{
     document.getElementById('meals').innerHTML = '';
     document.getElementById('meal-details').innerHTML = '';
+    document.getElementById('alert').innerHTML = '';
     document.getElementById('meal-details').style.display = "none";
     const item = document.getElementById('item').value;
     const itemName = item.length;
@@ -31,8 +32,19 @@ const itemDivHandler = () =>{
 
 function showItem(data) {
     const mealItems = document.getElementById('meals');
+    
+    if(data == null){
+        const alertContainer = document.getElementById('alert');
+        const alertDiv = document.createElement('div');
+        alertDiv.className = 'alert';
+        const alertMessage = `
+            <p class="alertMessage"> OOPS! Your Item Is Not Found </p>
+        `;
+        alertDiv.innerHTML = alertMessage;
+        alertContainer.appendChild(alertDiv);
+    }
+    
             data.forEach(element => {
-           
             const mealDiv = document.createElement('div');
             mealDiv.className = 'meal';
             mealDiv.id = 'meal-item';
@@ -60,30 +72,18 @@ const showInfo = meal =>{
                     <h3 style ="font-size: 30px;
                     font-weight: bold;align:left;"> Ingredients </h3>
                     <ul class="ingredients">
-                        <li style ="font-size: 20px;
-                        font-weight: bold;"> ${data.strMeasure1} ${data.strIngredient1}</li>
-                        <li style ="font-size: 20px;
-                        font-weight: bold;"> ${data.strMeasure2} ${data.strIngredient2}</li>
-                        <li style ="font-size: 20px;
-                        font-weight: bold;"> ${data.strMeasure3} ${data.strIngredient3}</li>
-                        <li style ="font-size: 20px;
-                        font-weight: bold;"> ${data.strMeasure4} ${data.strIngredient4}</li>
-                        <li style ="font-size: 20px;
-                        font-weight: bold;"> ${data.strMeasure5} ${data.strIngredient5}</li>
-                        <li style ="font-size: 20px;
-                        font-weight: bold;"> ${data.strMeasure6} ${data.strIngredient6}</li>
-                        <li style ="font-size: 20px;
-                        font-weight: bold;"> ${data.strMeasure7} ${data.strIngredient7}</li>
-                        <li style ="font-size: 20px;
-                        font-weight: bold;"> ${data.strMeasure8} ${data.strIngredient8}</li>
-                        <li style ="font-size: 20px;
-                        font-weight: bold;"> ${data.strMeasure9} ${data.strIngredient9}</li>
-                        <li style ="font-size: 20px;
-                        font-weight: bold;"> ${data.strMeasure10} ${data.strIngredient10}</li>
-                        <li style ="font-size: 20px;
-                        font-weight: bold;"> ${data.strMeasure11} ${data.strIngredient11}</li>
-                        <li style ="font-size: 20px;
-                        font-weight: bold;"> ${data.strMeasure12} ${data.strIngredient12}</li>
+                        <li class="ingredients-list" > ${data.strMeasure1} ${data.strIngredient1}</li>
+                        <li class="ingredients-list"> ${data.strMeasure2} ${data.strIngredient2}</li>
+                        <li class="ingredients-list"> ${data.strMeasure3} ${data.strIngredient3}</li>
+                        <li class="ingredients-list"> ${data.strMeasure4} ${data.strIngredient4}</li>
+                        <li class="ingredients-list"> ${data.strMeasure5} ${data.strIngredient5}</li>
+                        <li class="ingredients-list"> ${data.strMeasure6} ${data.strIngredient6}</li>
+                        <li class="ingredients-list"> ${data.strMeasure7} ${data.strIngredient7}</li>
+                        <li class="ingredients-list"> ${data.strMeasure8} ${data.strIngredient8}</li>
+                        <li class="ingredients-list"> ${data.strMeasure9} ${data.strIngredient9}</li>
+                        <li class="ingredients-list"> ${data.strMeasure10} ${data.strIngredient10}</li>
+                        <li class="ingredients-list"> ${data.strMeasure11} ${data.strIngredient11}</li>
+                        <li class="ingredients-list"> ${data.strMeasure12} ${data.strIngredient12}</li>
                     </ul>
                     `;
                     mealDetail.className = 'ingredients';

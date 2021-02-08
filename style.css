@@ -52,3 +52,20 @@ button{
 #meal-details{
     display:none;
 }
+.ingredients-list{
+    font-size: 20px;
+    font-weight: bold;
+    color:black;
+}
+.alert{
+    background-color: lightgray;
+    margin: 0 auto;
+    width: 25%;
+    padding: 10px;
+    display: block;
+}
+.alertMessage{
+    font-size: 20px;
+    text-align: center;
+    padding-top:10px ;
+}
