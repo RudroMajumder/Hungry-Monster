@@ -66,7 +66,7 @@ const showInfo = meal =>{
         const showMealInfo = data =>{
             const mealDetail= document.getElementById('meal-details');
              mealDetail.innerHTML = `
-                <img src =" ${data.strMealThumb}" width="700px" style="margin:40px;" align="center">
+                <img src =" ${data.strMealThumb}" width="500px" style="margin:40px;" class="details-img">
                     <h1 style ="font-size: 30px;
                     font-weight: bold;"> ${data.strMeal} </h2>
                     <h3 style ="font-size: 30px;
